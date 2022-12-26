@@ -17,6 +17,10 @@ public class Conversor {
         this.code = code;
     }
 
+    public Conversor() {
+        this.code = "";
+    }
+
     public String getCode() {
         return code;
     }
@@ -26,6 +30,9 @@ public class Conversor {
     }
 
     public String getPseudo() {
+        if (pseudo == null) {
+            convert();
+        }
         return pseudo;
     }
 
@@ -48,17 +55,15 @@ public class Conversor {
         // Filtering processes
         String[] lines = Filter.filterText(code);
 
-
         // Tagging process
         Tagger tagger = new Tagger(scannerVar);
         TaggedText[] tagged = tagger.tagText(lines);
 
-        // Stream.of(tagged).forEach(line -> System.out.println(line.getText() + "                 | Tag: " + line.getTag() + " | Indentation: " + line.getIndentationLevel())); TODO: Line just for debugging
-
         // Tagged Text processor
         Processor processor = new Processor(scannerVar);
-        String[] processedText;
+        String finalText = processor.processAll(tagged);
 
+        pseudo = finalText;
     }
 
     public void searchScannerVar() {

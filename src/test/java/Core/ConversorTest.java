@@ -196,6 +196,7 @@ public class ConversorTest {
     public void convertTheCode() {
         Conversor c = new Conversor(code3);
         c.convert();
+        System.out.println(c.getPseudo());
     }
 
 }

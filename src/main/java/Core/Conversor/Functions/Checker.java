@@ -1,13 +1,13 @@
 package Core.Conversor.Functions;
 
-public class Checks extends CheckUtils {
+public class Checker extends CheckUtils {
 
     String line;
     String scannerVar;
     String[] functionNames;
     String[] subroutineNames;
 
-    public Checks(String line, String scannerVar, String[] functionNames, String[] subroutineNames) {
+    public Checker(String line, String scannerVar, String[] functionNames, String[] subroutineNames) {
         this.line = line;
         this.scannerVar = scannerVar;
         this.functionNames = functionNames;
@@ -80,7 +80,14 @@ public class Checks extends CheckUtils {
 
     public boolean checkIfFunction() {
         if (line.contains("(") && line.contains(")") && line.contains("{")) {
-            String[] parts = line.split("\\(")[0].split(" ");
+            String[] parts;
+
+            try {
+                parts = line.split("\\(")[0].split(" ");
+            } catch (Exception e) {
+                return false;
+            }
+
             for (int i = 0; i < parts.length - 1; i++) {
                 if (haveAnyVarType(parts[i])) {
                     return true;

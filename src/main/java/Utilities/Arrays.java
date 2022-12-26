@@ -1599,15 +1599,39 @@ public class Arrays {
      * @param value the element to be inserted
      * @return the array with the element inserted
      */
-    public static <T> T[] set(T[] array, int index, T value) {
+    public static String[] set(String[] array, int index, String value) {
         if (index < 0 || index >= len(array)) {
             return array;
         } else {
-            T[] newArray = (T[]) new Object[array.length + 1];
+            String[] newArray = new String[len(array) + 1];
             System.arraycopy(array, 0, newArray, 0, index);
             newArray[index] = value;
-            if (newArray.length - (index + 1) >= 0)
+            if (len(newArray) - (index + 1) >= 0)
                 System.arraycopy(array, index + 1 - 1, newArray, index + 1, len(newArray) - (index + 1));
+            return newArray;
+        }
+    }
+
+    /**
+     * Inserts the specified element at the specified position in the specified array
+     *
+     * @param array the array to insert the element
+     * @param index the index at which the specified element is to be inserted
+     * @param value the element to be inserted
+     * @return the array with the element inserted
+     */
+    public static Object[] set(Object[] array, int index, Object value) {
+        if (index < 0 || index >= len(array)) {
+            return array;
+        } else {
+            Object[] newArray = new Object[len(array) + 1];
+            for (int i = 0; i < index - 1; i++) {
+                newArray[i] = array[i];
+            }
+            newArray[index] = value;
+            for (int i = index + 1; i < len(newArray); i++) {
+                newArray[i] = array[i - 1];
+            }
             return newArray;
         }
     }

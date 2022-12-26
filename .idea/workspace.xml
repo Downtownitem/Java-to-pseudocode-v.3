@@ -7,38 +7,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1db72f91-6d51-4dd3-b5e0-548f05d66649" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/packagesearch.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Apps/Start.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Conversor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/CheckUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Checks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Filter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Processor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Tagger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Models/TaggedText.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Models/Tags.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Custom/AnimatedTextArea.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Custom/LogoLabel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Custom/ShadowPanelComponent/ShadowPanelForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/Animations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/AnimationsUnique.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/Arrays.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/DataBases.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/Files.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/Logs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Icons/booksIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/backgroundImage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/uninorte.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Core/ConversorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Core/TestClass.java" afterDir="false" />
+    <list default="true" id="1db72f91-6d51-4dd3-b5e0-548f05d66649" name="Changes" comment="First commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Core/Conversor/Conversor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Conversor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Checks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Checker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Processor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Processor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Tagger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Tagger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Core/Conversor/Models/TaggedText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Models/TaggedText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/Arrays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/Arrays.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Core/ConversorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Core/ConversorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Core/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Core/TestClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,8 +159,16 @@
       <workItem from="1671937315425" duration="2000" />
       <workItem from="1671988175554" duration="4040000" />
       <workItem from="1672005582762" duration="2202000" />
-      <workItem from="1672020918743" duration="3045000" />
+      <workItem from="1672020918743" duration="11686000" />
     </task>
+    <task id="LOCAL-00001" summary="First commit">
+      <created>1672024250492</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672024250492</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,16 +187,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Screens/MainInterface.java</url>
-          <line>431</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="First commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
   </component>
 </project>

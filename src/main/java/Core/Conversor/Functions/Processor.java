@@ -3,6 +3,8 @@ package Core.Conversor.Functions;
 import Core.Conversor.Models.TaggedText;
 import Core.Conversor.Models.Tags;
 
+import java.util.ArrayList;
+
 public class Processor {
 
     String scannerVar;
@@ -12,13 +14,47 @@ public class Processor {
     }
 
     public String processAll(TaggedText[] taggedText) {
+        ArrayList<String> processedText = new ArrayList<>();
 
+        for (int i = 0; i < taggedText.length; i++) {
+            Tags tag = taggedText[i].getTag();
+            String processedLine = processLine(taggedText[i]);
+
+            if (i == 0) {
+                processedText.add(processedLine);
+
+            } else {
+                if (!processedText.get(processedText.size() - 1).equals("") && (tag == Tags.FUNCTION_START_LINE || tag == Tags.WHILE_LINE || tag == Tags.IF_LINE || tag == Tags.FOR_LINE || tag == Tags.SWITCH_LINE || tag == Tags.DO_WHILE_LINE || tag == Tags.SUBROUTINE_START_LINE || tag == Tags.MAIN_FUNCTION_START_LINE)) {
+                    processedText.add("");
+                    processedText.add(processedLine);
+
+                } else if (tag == Tags.FUNCTION_END_LINE || tag == Tags.WHILE_END_LINE || tag == Tags.IF_END_LINE || tag == Tags.FOR_END_LINE || tag == Tags.SWITCH_END_LINE || tag == Tags.DO_WHILE_END_LINE || tag == Tags.SUBROUTINE_END_LINE || tag == Tags.CASE_END_LINE || tag == Tags.MAIN_FUNCTION_END_LINE) {
+                    processedText.add(processedLine);
+                    processedText.add("");
+
+                } else {
+                    processedText.add(processedLine);
+                }
+            }
+        }
+
+        String text = "";
+        for (int i = 0; i < processedText.size(); i++) {
+            if (i == 0) {
+                text += processedText.get(i);
+            } else {
+                text += "\n" + processedText.get(i);
+            }
+        }
+
+        return text;
     }
 
     public String processLine(TaggedText line) {
         String text = line.getText();
         Tags tag = line.getTag();
         int spaceLevel = line.getIndentationLevel();
+        String property = line.getProperty();
 
         switch (tag) {
             case IF_LINE -> {
@@ -88,7 +124,7 @@ public class Processor {
                 return processFunctionStartLine(text, spaceLevel);
             }
             case FUNCTION_END_LINE -> {
-                return processFunctionEndLine(text, spaceLevel);
+                return processFunctionEndLine(text, spaceLevel, property);
             }
             case RETURN_LINE -> {
                 return processReturnLine(text, spaceLevel);
@@ -100,7 +136,7 @@ public class Processor {
                 return processSubroutineStartLine(text, spaceLevel);
             }
             case SUBROUTINE_END_LINE -> {
-                return processSubroutineEndLine(text, spaceLevel);
+                return processSubroutineEndLine(text, spaceLevel, property);
             }
             case SUBROUTINE_CALL_LINE -> {
                 return processSubroutineCallLine(text, spaceLevel);
@@ -110,129 +146,300 @@ public class Processor {
         return null;
     }
 
-    public String getFunctionName(String text) {
+    public static String getFunctionName(String text) {
         String[] words = text.split("\\(")[0].trim().split(" ");
         return words[words.length - 1];
     }
 
-    private String processSubroutineCallLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processSubroutineEndLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processSubroutineStartLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processFunctionCallLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processReturnLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processFunctionEndLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processFunctionStartLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processMainFunctionEndLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processMainFunctionStartLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processInputLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processOutputLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processStatementLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processVariableDeclarationAssignation(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processVariableAssignation(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processVariableDeclaration(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processDoWhileEndLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processDoWhileLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processDefaultLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processCaseLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processSwitchEndLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processSwitchLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processForEndLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processForLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processWhileEndLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processWhileLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processIfElseEndLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processIfElseLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processIfEndLine(String text, int spaceLevel) {
-        return null;
-    }
-
-    private String processElseLine(String text, int spaceLevel) {
-        return null;
+    private static String getIndentation(int spaceLevel) {
+        return "\t".repeat(spaceLevel);
     }
 
     private String processIfLine(String text, int spaceLevel) {
-        return null;
+        String finalText = text
+                .replace("if", "Si")
+                .replace("{", "Entonces")
+                .replace("||", "|")
+                .replace("|", "o")
+                .replace("&&", "&")
+                .replace("&", "y")
+                .replace("==", "=")
+                .replace("!=", "<>");
+
+        return getIndentation(spaceLevel) + finalText;
+    }
+
+    private String processElseLine(String text, int spaceLevel) {
+        return getIndentation(spaceLevel) + "Sino";
+    }
+
+    private String processIfEndLine(String text, int spaceLevel) {
+        return getIndentation(spaceLevel) + "FinSi";
+    }
+
+    private String processWhileLine(String text, int spaceLevel) {
+        String finalText = text
+                .replace("while", "Mientras que")
+                .replace("{", "Hacer")
+                .replace("||", "|")
+                .replace("|", "o")
+                .replace("&&", "&")
+                .replace("&", "y")
+                .replace("==", "=")
+                .replace("!=", "<>");
+
+        return getIndentation(spaceLevel) + finalText;
+    }
+
+    private String processWhileEndLine(String text, int spaceLevel) {
+        return getIndentation(spaceLevel) + "FinMientrasQue";
+    }
+
+    private String processForLine(String text, int spaceLevel) {
+        String finalText = text
+                .replace("for", "Para")
+                .replace("{", "Hacer")
+                .replace("||", "|")
+                .replace("|", "o")
+                .replace("&&", "&")
+                .replace("&", "y")
+                .replace("==", "=")
+                .replace("!=", "<>");
+
+        return getIndentation(spaceLevel) + finalText;
+    }
+
+    private String processForEndLine(String text, int spaceLevel) {
+        return getIndentation(spaceLevel) + "FinPara";
+    }
+
+    private String processSwitchLine(String text, int spaceLevel) {
+        String finalText = text
+                .replace("switch", "Dependiendo de")
+                .replace("{", "Hacer")
+                .replace("||", "|")
+                .replace("|", "o")
+                .replace("&&", "&")
+                .replace("&", "y")
+                .replace("==", "=")
+                .replace("!=", "<>");
+
+        return getIndentation(spaceLevel) + finalText;
+    }
+
+    private String processSwitchEndLine(String text, int spaceLevel) {
+        return getIndentation(spaceLevel) + "FinDependiendoDe";
+    }
+
+    private String processCaseLine(String text, int spaceLevel) {
+        String finalText = text
+                .replace("case", "Caso")
+                .replace("||", "|")
+                .replace("|", "o")
+                .replace("&&", "&")
+                .replace("&", "y")
+                .replace("==", "=")
+                .replace("!=", "<>");
+
+        return getIndentation(spaceLevel) + finalText;
+    }
+
+    private String processDefaultLine(String text, int spaceLevel) {
+        return getIndentation(spaceLevel) + "CasoDefecto:";
+    }
+
+    private String processDoWhileLine(String text, int spaceLevel) {
+        return getIndentation(spaceLevel) + "Hacer";
+    }
+
+    private String processDoWhileEndLine(String text, int spaceLevel) {
+        String finalText = text
+                .replace("}", "")
+                .trim()
+                .replace("while", "Hasta (no")
+                .replace("||", "|")
+                .replace("|", "o")
+                .replace("&&", "&")
+                .replace("&", "y")
+                .replace("==", "=")
+                .replace("!=", "<>");
+
+        return getIndentation(spaceLevel) + finalText + ")";
+    }
+
+    private String processVariableDeclaration(String text, int spaceLevel) {
+        String finalText = text
+                .replace("int", "Entero")
+                .replace("double", "Decimal")
+                .replace("float", "Decimal")
+                .replace("char", "Caracter")
+                .replace("String", "Cadena")
+                .replace("boolean", "Logico")
+                .replace(";", "")
+                .replace("=", "<-");
+
+        return getIndentation(spaceLevel) + finalText;
+    }
+
+    private String processVariableAssignation(String text, int spaceLevel) {
+        String finalText = text
+                .replace("=", "<-")
+                .replace(";", "");
+
+        return getIndentation(spaceLevel) + finalText;
+    }
+
+    private String processVariableDeclarationAssignation(String text, int spaceLevel) {
+        String finalText = text
+                .replace("int", "Entero")
+                .replace("double", "Decimal")
+                .replace("float", "Decimal")
+                .replace("char", "Caracter")
+                .replace("String", "Cadena")
+                .replace("boolean", "Logico")
+                .replace(";", "")
+                .replace("=", "<-");
+
+        return getIndentation(spaceLevel) + finalText;
+    }
+
+    private String processStatementLine(String text, int spaceLevel) {
+        String finalText = text
+                .replace("=", "<-")
+                .replace(";", "");
+
+        return getIndentation(spaceLevel) + finalText;
+    }
+
+    private String processOutputLine(String text, int spaceLevel) {
+        String finalText = text
+                .replace("System.out.println (", "Escribir ")
+                .replace("System.out.println(", "Escribir ")
+                .replace("System.out.print (", "Escribir ")
+                .replace("System.out.print(", "Escribir ")
+                .replace(");", "");
+
+        return getIndentation(spaceLevel) + finalText;
+    }
+
+    private String processInputLine(String text, int spaceLevel) {
+        String finalText = text
+                .split("=")[0]
+                .trim();
+
+        if (finalText.contains(" ") && CheckUtils.haveAnyVarType(finalText)) {
+            String[] parts = finalText.split(" ");
+            String varType = parts[0]
+                    .replace("int", "Entero")
+                    .replace("double", "Decimal")
+                    .replace("float", "Decimal")
+                    .replace("char", "Caracter")
+                    .replace("String", "Cadena")
+                    .replace("boolean", "Logico");
+
+            String varName = parts[1];
+
+            return getIndentation(spaceLevel) + varType + " " + varName + "\n" + getIndentation(spaceLevel) + "Leer " + varName;
+        } else {
+            return getIndentation(spaceLevel) + "Leer " + finalText;
+        }
+    }
+
+    private String processMainFunctionStartLine(String text, int spaceLevel) {
+        return getIndentation(spaceLevel) + "Inicio";
+    }
+
+    private String processMainFunctionEndLine(String text, int spaceLevel) {
+        return getIndentation(spaceLevel) + "Fin";
+    }
+
+    private String processFunctionStartLine(String text, int spaceLevel) {
+        String finalText = text
+                .replace("public", "")
+                .replace("static", "")
+                .replace("void", "")
+                .replace(")", "")
+                .replace("{", "")
+                .trim();
+
+        String[] parts = finalText.split("\\(");
+
+        String varType = parts[0]
+                .split(" ")[0]
+                .replace("int", "Entero")
+                .replace("double", "Decimal")
+                .replace("float", "Decimal")
+                .replace("char", "Caracter")
+                .replace("String", "Cadena")
+                .replace("boolean", "Logico");
+
+        String functionName = getFunctionName(text);
+
+        String functionParameters = parts[1]
+                .replace("int", "Entero")
+                .replace("double", "Decimal")
+                .replace("float", "Decimal")
+                .replace("char", "Caracter")
+                .replace("String", "Cadena")
+                .replace("boolean", "Logico");
+
+        return getIndentation(spaceLevel) + varType + " " + functionName + "(" + functionParameters + ")";
+    }
+
+    private String processFunctionEndLine(String text, int spaceLevel, String property) {
+        return getIndentation(spaceLevel) + "Fin " + property;
+    }
+
+    private String processReturnLine(String text, int spaceLevel) {
+        String finalText = text
+                .replace("return", "Retornar")
+                .replace(";", "");
+
+        return getIndentation(spaceLevel) + finalText;
+    }
+
+    private String processFunctionCallLine(String text, int spaceLevel) {
+        String finalText = text
+                .replace("int", "Entero")
+                .replace("double", "Decimal")
+                .replace("float", "Decimal")
+                .replace("char", "Caracter")
+                .replace("String", "Cadena")
+                .replace("boolean", "Logico")
+                .replace("=", "<-")
+                .replace(";", "");
+
+        return getIndentation(spaceLevel) + finalText;
+    }
+
+    private String processSubroutineStartLine(String text, int spaceLevel) {
+        String finalText = text
+                .replace("public", "")
+                .replace("static", "")
+                .replace("void", "")
+                .replace(")", "")
+                .replace("{", "")
+                .trim();
+
+        String[] parts = finalText.split("\\(");
+
+        String functionParameters = parts[1]
+                .replace("int", "Entero")
+                .replace("double", "Decimal")
+                .replace("float", "Decimal")
+                .replace("char", "Caracter")
+                .replace("String", "Cadena")
+                .replace("boolean", "Logico");
+
+        return getIndentation(spaceLevel) + "Subrutina " + parts[0] + "(" + functionParameters + ")";
+    }
+
+    private String processSubroutineEndLine(String text, int spaceLevel, String property) {
+        return getIndentation(spaceLevel) + "Fin " + property;
+    }
+
+    private String processSubroutineCallLine(String text, int spaceLevel) {
+        return getIndentation(spaceLevel) + text.replace(";", "");
     }
 
 }

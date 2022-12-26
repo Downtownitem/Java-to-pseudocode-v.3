@@ -10,6 +10,7 @@ public class Tagger {
 
     private int actualIndentationLevel;
     private Stack<Tags> endLineStack;
+    private Stack<String> functionStack;
     private String scannerVar;
     private String[] functionNames;
     private String[] subroutineNames;
@@ -25,6 +26,7 @@ public class Tagger {
     public Tagger(String scannerVar) {
         actualIndentationLevel = 0;
         endLineStack = new Stack<>();
+        functionStack = new Stack<>();
         this.scannerVar = scannerVar;
     }
 
@@ -42,37 +44,21 @@ public class Tagger {
 
     private void getFunctionNames(String[] filteredText) {
         functionNames = Stream.of(filteredText)
-                .filter(line -> new Checks(line, null, null, null).checkIfFunction())
-                .map(line -> {
-                    line = line.split("\\(")[0];
-                    String[] toDeleteThings = {"int", "double", "float", "String", "char", "boolean", "long", "short", "byte", "public", "private", "protected", "static"};
-                    for (String thing : toDeleteThings) {
-                        line = line.replace(thing, "");
-                    }
-                    line = line.replace(" ", "");
-                    return line;
-                })
+                .filter(line -> new Checker(line, null, null, null).checkIfFunction())
+                .map(Processor::getFunctionName)
                 .toArray(String[]::new);
     }
 
     private void getSubroutineNames(String[] filteredText) {
         subroutineNames = Stream.of(filteredText)
-                .filter(line -> new Checks(line, null, null, null).checkIfSubroutine())
-                .map(line -> {
-                    line = line.split("\\(")[0];
-                    String[] toDeleteThings = {"void", "public", "private", "protected", "static"};
-                    for (String thing : toDeleteThings) {
-                        line = line.replace(thing, "");
-                    }
-                    line = line.replace(" ", "");
-                    return line;
-                })
+                .filter(line -> new Checker(line, null, null, null).checkIfSubroutine())
+                .map(Processor::getFunctionName)
                 .toArray(String[]::new);
     }
 
     private TaggedText identify(String line) {
         Tags tag;
-        Checks c = new Checks(line, scannerVar, functionNames, subroutineNames);
+        Checker c = new Checker(line, scannerVar, functionNames, subroutineNames);
         TaggedText taggedText;
 
         if (c.checkIfMainFunction()) {
@@ -126,13 +112,27 @@ public class Tagger {
 
         } else if (c.checkIfFunction()) {
             endLineStack.push(Tags.FUNCTION_END_LINE);
+            functionStack.push(Processor.getFunctionName(line));
             taggedText = new TaggedText(line, Tags.FUNCTION_START_LINE, actualIndentationLevel);
             actualIndentationLevel++;
 
         } else if (c.checkIfSubroutine()) {
             endLineStack.push(Tags.SUBROUTINE_END_LINE);
+            functionStack.push(Processor.getFunctionName(line));
             taggedText = new TaggedText(line, Tags.SUBROUTINE_START_LINE, actualIndentationLevel);
             actualIndentationLevel++;
+
+        } else if (c.checkIfFunctionCall()) {
+            taggedText = new TaggedText(line, Tags.FUNCTION_CALL_LINE, actualIndentationLevel);
+
+        } else if (c.checkIfSubroutineCall()) {
+            taggedText = new TaggedText(line, Tags.SUBROUTINE_CALL_LINE, actualIndentationLevel);
+
+        } else if (c.checkIfOutput()) {
+            taggedText = new TaggedText(line, Tags.OUTPUT_LINE, actualIndentationLevel);
+
+        } else if (c.checkIfInput()) {
+            taggedText = new TaggedText(line, Tags.INPUT_LINE, actualIndentationLevel);
 
         } else if (c.checkIfVariableDeclarationAndAssignment()) {
             taggedText = new TaggedText(line, Tags.VARIABLE_DECLARATION_ASSIGNATION, actualIndentationLevel);
@@ -143,26 +143,20 @@ public class Tagger {
         } else if (c.checkIfVariableAssignment()) {
             taggedText = new TaggedText(line, Tags.VARIABLE_ASSIGNATION, actualIndentationLevel);
 
-        } else if (c.checkIfOutput()) {
-            taggedText = new TaggedText(line, Tags.OUTPUT_LINE, actualIndentationLevel);
-
-        } else if (c.checkIfInput()) {
-            taggedText = new TaggedText(line, Tags.INPUT_LINE, actualIndentationLevel);
-
         } else if (c.checkIfReturn()) {
             taggedText = new TaggedText(line, Tags.RETURN_LINE, actualIndentationLevel);
-
-        } else if (c.checkIfFunctionCall()) {
-            taggedText = new TaggedText(line, Tags.FUNCTION_CALL_LINE, actualIndentationLevel);
-
-        } else if (c.checkIfSubroutineCall()) {
-            taggedText = new TaggedText(line, Tags.SUBROUTINE_CALL_LINE, actualIndentationLevel);
 
         } else if (c.checkIfEnd()) {
             tag = endLineStack.pop();
             actualIndentationLevel--;
-            taggedText = new TaggedText(line, tag, actualIndentationLevel);
 
+            if (tag == Tags.FUNCTION_END_LINE) {
+                taggedText = new TaggedText(line, Tags.FUNCTION_END_LINE, actualIndentationLevel, functionStack.pop());
+            } else if (tag == Tags.SUBROUTINE_END_LINE) {
+                taggedText = new TaggedText(line, Tags.SUBROUTINE_END_LINE, actualIndentationLevel, functionStack.pop());
+            } else {
+                taggedText = new TaggedText(line, tag, actualIndentationLevel);
+            }
         } else {
             taggedText = new TaggedText(line, Tags.STATEMENT_LINE, actualIndentationLevel);
         }
