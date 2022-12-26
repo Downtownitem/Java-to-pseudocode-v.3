@@ -1,0 +1,2 @@
+slideHow1.setAutoScroll(false);
+slideHow1.initSlideshow(new Slide1(), new Slide2(), new Slide3());

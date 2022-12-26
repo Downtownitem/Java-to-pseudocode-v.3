@@ -1,0 +1,186 @@
+package Custom;
+
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.Shape;
+import javax.swing.JButton;
+import javax.swing.border.EmptyBorder;
+import Custom.Utilities.FancyUtilities.FancyBorderRadius;
+import java.awt.AlphaComposite;
+import java.awt.Component;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.SwingUtilities;
+import org.jdesktop.animation.timing.Animator;
+import org.jdesktop.animation.timing.TimingTargetAdapter;
+
+public class FancyButton extends JButton {
+
+    private Shape shape;
+    private final FancyButtonRippleEffect rippleEffect;
+    private String code = "15% 85% 63% 37% / 38% 29% 71% 62%";
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+        repaint();
+    }
+
+    public FancyButton() {
+        rippleEffect = new FancyButtonRippleEffect(this);
+        setContentAreaFilled(false);
+        setBorder(new EmptyBorder(8, 5, 8, 5));
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }
+
+    @Override
+    protected void paintComponent(Graphics grphcs) {
+        Graphics2D g2 = (Graphics2D) grphcs.create();
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setColor(new Color(255, 255, 255, 80));
+        g2.fill(shape);
+        rippleEffect.reder(g2, shape);
+        g2.dispose();
+        super.paintComponent(grphcs);
+    }
+
+    @Override
+    public void setBounds(int i, int i1, int i2, int i3) {
+        super.setBounds(i, i1, i2, i3);
+        shape = new FancyBorderRadius(getWidth(), getHeight(), code).getShape();
+    }
+
+}
+
+class FancyButtonRippleEffect {
+
+    private final Component component;
+    private Color rippleColor = new Color(255, 255, 255);
+    private List<Effect> effects;
+
+    public FancyButtonRippleEffect(Component component) {
+        this.component = component;
+        init();
+    }
+
+    private void init() {
+        effects = new ArrayList<>();
+        component.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (component.isEnabled()) {
+                    if (SwingUtilities.isLeftMouseButton(e)) {
+                        addEffect(e.getPoint());
+                    }
+                }
+            }
+        });
+    }
+
+    public void addEffect(Point location) {
+        effects.add(new Effect(component, location));
+    }
+
+    public void reder(Graphics g, Shape contain) {
+        Graphics2D g2 = (Graphics2D) g.create();
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        for (int i = 0; i < effects.size(); i++) {
+            Effect effect = effects.get(i);
+            if (effect != null) {
+                effect.render(g2, contain);
+            }
+        }
+        g2.dispose();
+    }
+
+    private class Effect {
+
+        private final Component component;
+        private final Point location;
+        private Animator animator;
+        private float animate;
+
+        public Effect(Component component, Point location) {
+            this.component = component;
+            this.location = location;
+            init();
+        }
+
+        private void init() {
+            animator = new Animator(500, new TimingTargetAdapter() {
+                @Override
+                public void timingEvent(float fraction) {
+                    animate = fraction;
+                    component.repaint();
+                }
+
+                @Override
+                public void end() {
+                    effects.remove(Effect.this);
+                }
+            });
+            animator.setResolution(5);
+            // animator.setDeceleration(.5f);
+            animator.start();
+        }
+
+        public void render(Graphics2D g2, Shape contain) {
+            Area area = new Area(contain);
+            area.intersect(new Area(getShape(getSize(contain.getBounds2D()))));
+            g2.setColor(rippleColor);
+            float alpha = 0.3f;
+            if (animate >= 0.7f) {
+                double t = animate - 0.7f;
+                alpha = (float) (alpha - (alpha * (t / 0.3f)));
+            }
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+            g2.fill(area);
+        }
+
+        private Shape getShape(double size) {
+            double s = size * animate;
+            double x = location.getX();
+            double y = location.getY();
+            Shape shape = new Ellipse2D.Double(x - s, y - s, s * 2, s * 2);
+            return shape;
+        }
+
+        private double getSize(Rectangle2D rec) {
+            double size;
+            if (rec.getWidth() > rec.getHeight()) {
+                if (location.getX() < rec.getWidth() / 2) {
+                    size = rec.getWidth() - location.getX();
+                } else {
+                    size = location.getX();
+                }
+            } else {
+                if (location.getY() < rec.getHeight() / 2) {
+                    size = rec.getHeight() - location.getY();
+                } else {
+                    size = location.getY();
+                }
+            }
+            return size + (size * 0.1f);
+        }
+    }
+
+    public void setRippleColor(Color rippleColor) {
+        this.rippleColor = rippleColor;
+    }
+
+    public Color getRippleColor() {
+        return rippleColor;
+    }
+}
