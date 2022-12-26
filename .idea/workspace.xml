@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1db72f91-6d51-4dd3-b5e0-548f05d66649" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/packagesearch.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Apps/Start.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Conversor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/CheckUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Checks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Filter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Processor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Tagger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Models/TaggedText.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Models/Tags.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Custom/AnimatedTextArea.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Custom/LogoLabel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Custom/ShadowPanelComponent/ShadowPanelForm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/Animations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/AnimationsUnique.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/Arrays.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/DataBases.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/Files.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/Logs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Icons/booksIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/backgroundImage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/uninorte.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Core/ConversorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Core/TestClass.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="JUnit4 Test Class" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2JH6guoHYmz3UKTB5tjW1bCi7k4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/danie/OneDrive/Documentos/Programacion/Intellij IDEA/patrones_diseno&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\danie\OneDrive\Documentos\Programacion\Intellij IDEA\Java_to_Pseudocode_Conversor\src\main\resources\Icons" />
+      <recent name="C:\Users\danie\OneDrive\Documentos\Programacion\Intellij IDEA\Java_to_Pseudocode_Conversor\src\main\java\Frames" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Core" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Core" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ConversorTest.convertTheCode">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Apps.Start" />
+      <module name="Java_to_Pseudocode_Conversor" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConversorTest.convertTheCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Java_to_Pseudocode_Conversor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Core.Conversor.Functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Core" />
+      <option name="MAIN_CLASS_NAME" value="Core.ConversorTest" />
+      <option name="METHOD_NAME" value="convertTheCode" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConversorTest.searchScannerVar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Java_to_Pseudocode_Conversor" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Core.Conversor.Functions.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Core" />
+      <option name="MAIN_CLASS_NAME" value="Core.ConversorTest" />
+      <option name="METHOD_NAME" value="searchScannerVar" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ConversorTest.convertTheCode" />
+        <item itemvalue="JUnit.ConversorTest.searchScannerVar" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1db72f91-6d51-4dd3-b5e0-548f05d66649" name="Changes" comment="" />
+      <created>1671722777146</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671722777146</updated>
+      <workItem from="1671722779416" duration="2470000" />
+      <workItem from="1671726475992" duration="1462000" />
+      <workItem from="1671728728545" duration="7650000" />
+      <workItem from="1671767127968" duration="10029000" />
+      <workItem from="1671827857787" duration="178000" />
+      <workItem from="1671828118583" duration="643000" />
+      <workItem from="1671828772534" duration="120000" />
+      <workItem from="1671828902098" duration="14693000" />
+      <workItem from="1671895102946" duration="66000" />
+      <workItem from="1671895176765" duration="4311000" />
+      <workItem from="1671900984433" duration="5472000" />
+      <workItem from="1671928120545" duration="3603000" />
+      <workItem from="1671931758772" duration="1712000" />
+      <workItem from="1671937315425" duration="2000" />
+      <workItem from="1671988175554" duration="4040000" />
+      <workItem from="1672005582762" duration="2202000" />
+      <workItem from="1672020918743" duration="3045000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Screens/MainInterface.java</url>
+          <line>431</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
