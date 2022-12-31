@@ -152,7 +152,7 @@ public class Processor {
     }
 
     private static String getIndentation(int spaceLevel) {
-        return "\t".repeat(spaceLevel);
+        return "    ".repeat(spaceLevel);
     }
 
     private String processIfLine(String text, int spaceLevel) {
@@ -196,17 +196,11 @@ public class Processor {
     }
 
     private String processForLine(String text, int spaceLevel) {
-        String finalText = text
-                .replace("for", "Para")
-                .replace("{", "Hacer")
-                .replace("||", "|")
-                .replace("|", "o")
-                .replace("&&", "&")
-                .replace("&", "y")
-                .replace("==", "=")
-                .replace("!=", "<>");
+        // TODO: Falta implementar la conversion de cada parte del for
+        // TODO: Y tratar de implementar la conversion del for al while en caso necesario
+        // TODO: Posiblemente se pueda hacer mas facil en el proceso de filtrado o etiquetado
 
-        return getIndentation(spaceLevel) + finalText;
+        return getIndentation(spaceLevel);
     }
 
     private String processForEndLine(String text, int spaceLevel) {
@@ -290,17 +284,44 @@ public class Processor {
     }
 
     private String processVariableDeclarationAssignation(String text, int spaceLevel) {
-        String finalText = text
-                .replace("int", "Entero")
-                .replace("double", "Decimal")
-                .replace("float", "Decimal")
-                .replace("char", "Caracter")
-                .replace("String", "Cadena")
-                .replace("boolean", "Logico")
-                .replace(";", "")
-                .replace("=", "<-");
+        if (text.contains("[") && text.contains("]")) {
+            String[] finalText = text
+                    .split("=")[0]
+                    .trim()
+                    .replace("[", "")
+                    .replace("]", "")
+                    .split(" ");
 
-        return getIndentation(spaceLevel) + finalText;
+            String varName = finalText[1];
+            String varType = finalText[0]
+                    .replace("int", "Entero")
+                    .replace("double", "Decimal")
+                    .replace("float", "Decimal")
+                    .replace("char", "Caracter")
+                    .replace("String", "Cadena")
+                    .replace("boolean", "Logico");
+            String varSize = text
+                    .split("=")[1]
+                    .trim()
+                    .split("\\[")[1]
+                    .split("\\]")[0];
+
+            return getIndentation(spaceLevel) + varType + " " + varName + "[" + varSize + "]";
+        } else {
+            String finalText = text
+                    .replace("int", "Entero")
+                    .replace("double", "Decimal")
+                    .replace("float", "Decimal")
+                    .replace("char", "Caracter")
+                    .replace("String", "Cadena")
+                    .replace("boolean", "Logico")
+                    .replace(";", "")
+                    .replace("=", "<-");
+
+            return getIndentation(spaceLevel) + finalText;
+        }
+
+
     }
 
     private String processStatementLine(String text, int spaceLevel) {

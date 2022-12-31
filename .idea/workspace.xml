@@ -7,16 +7,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1db72f91-6d51-4dd3-b5e0-548f05d66649" name="Changes" comment="First commit">
+    <list default="true" id="1db72f91-6d51-4dd3-b5e0-548f05d66649" name="Changes" comment="Lo que sea">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Font/Mont.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-Black.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-BlackItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-BoldItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-ExtraLight.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-ExtraLightItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-Heavy.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-HeavyItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-Light.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-LightItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-RegularItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-SemiBold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-SemiBoldItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-Thin.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fonts/Mont-ThinItalic.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Core/Conversor/Conversor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Conversor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Checks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Checker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Processor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Processor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Tagger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Functions/Tagger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Core/Conversor/Models/TaggedText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Core/Conversor/Models/TaggedText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/Arrays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/Arrays.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Core/ConversorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Core/ConversorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Core/TestClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Core/TestClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Screens/MainInterface.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Screens/MainInterface.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Screens/MainInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Screens/MainInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +88,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\danie\OneDrive\Documentos\Programacion\Intellij IDEA\Java_to_Pseudocode_Conversor\src\main\resources\Fonts" />
       <recent name="C:\Users\danie\OneDrive\Documentos\Programacion\Intellij IDEA\Java_to_Pseudocode_Conversor\src\main\resources\Icons" />
       <recent name="C:\Users\danie\OneDrive\Documentos\Programacion\Intellij IDEA\Java_to_Pseudocode_Conversor\src\main\java\Frames" />
     </key>
@@ -88,7 +102,7 @@
       <recent name="Core" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ConversorTest.convertTheCode">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Apps.Start" />
       <module name="Java_to_Pseudocode_Conversor" />
@@ -159,7 +173,12 @@
       <workItem from="1671937315425" duration="2000" />
       <workItem from="1671988175554" duration="4040000" />
       <workItem from="1672005582762" duration="2202000" />
-      <workItem from="1672020918743" duration="11686000" />
+      <workItem from="1672020918743" duration="15020000" />
+      <workItem from="1672094404625" duration="771000" />
+      <workItem from="1672277988144" duration="4309000" />
+      <workItem from="1672325398307" duration="1142000" />
+      <workItem from="1672427020241" duration="97000" />
+      <workItem from="1672450113669" duration="205000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1672024250492</created>
@@ -168,7 +187,28 @@
       <option name="project" value="LOCAL" />
       <updated>1672024250492</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Second">
+      <created>1672032741071</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1672032741072</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Lo que sea">
+      <created>1672032781311</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672032781311</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Lo que sea">
+      <created>1672032853613</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672032853613</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +228,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="First commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
+    <MESSAGE value="Second" />
+    <MESSAGE value="Lo que sea" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lo que sea" />
   </component>
 </project>
